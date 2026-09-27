@@ -39,16 +39,21 @@ jobs:
         run: |
           mapfile -t assets < <(find release-assets -type f \( -name '*.exe' -o -name '*.zip' -o -name 'latest*.yml' \) -print)
           test "${#assets[@]}" -gt 0
+
+          cat > release-notes.md <<'EOF'
+          Release focada exclusivamente na compatibilidade do OpenCode Go com Muse Spark 1.3 Contributor.
+
+          Alteração funcional:
+          - muse-spark-1.3-contributor passa a usar OpenAI Responses (/responses), seguindo o mesmo tratamento já usado pelo Muse Spark 1.2 Contributor.
+
+          Patch principal: ef96f82dc189d38125cfbbdb12b14d876fe0b245
+          Teste de regressão: d04a63b9d4ba253db95f2c38c48e52b152243619
+          Build Windows x64 já validado pelo workflow Fork Windows Build (run 36283568283).
+          EOF
+
           gh release create "$RELEASE_TAG" "${assets[@]}" \
             --repo "$GITHUB_REPOSITORY" \
             --target "$RELEASE_TARGET" \
-            --title "Maka Windows x64 — Muse Spark 1.3 Fix" \
+            --title "Maka Windows x64 - Muse Spark 1.3 Fix" \
             --prerelease \
-            --notes "Release focada exclusivamente na compatibilidade do OpenCode Go com Muse Spark 1.3 Contributor.
-
-Alteração funcional:
-- muse-spark-1.3-contributor passa a usar OpenAI Responses (/responses), seguindo o mesmo tratamento já usado pelo Muse Spark 1.2 Contributor.
-
-Patch principal: ef96f82dc189d38125cfbbdb12b14d876fe0b245
-Teste de regressão: d04a63b9d4ba253db95f2c38c48e52b152243619
-Build Windows x64 já validado pelo workflow Fork Windows Build (run 36283568283)."
+            --notes-file release-notes.md

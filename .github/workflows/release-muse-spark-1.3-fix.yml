@@ -24,7 +24,6 @@ jobs:
       RELEASE_TAG: v0.2.0-muse-spark-1.3-fix.1
       BUILD_RUN_ID: "36283568283"
       BUILD_ARTIFACT: maka-windows-x64-muse-spark-1.3-fix
-      RELEASE_TARGET: d3f02bb08bae0328b4638607a3dcfe9436ef0f29
     steps:
       - name: Download verified Windows x64 build
         run: |
@@ -48,12 +47,12 @@ jobs:
 
           Patch principal: ef96f82dc189d38125cfbbdb12b14d876fe0b245
           Teste de regressão: d04a63b9d4ba253db95f2c38c48e52b152243619
-          Build Windows x64 já validado pelo workflow Fork Windows Build (run 36283568283).
+          Binário Windows x64: build validado pelo workflow Fork Windows Build (run 36283568283).
           EOF
 
           gh release create "$RELEASE_TAG" "${assets[@]}" \
             --repo "$GITHUB_REPOSITORY" \
-            --target "$RELEASE_TARGET" \
+            --target "$GITHUB_SHA" \
             --title "Maka Windows x64 - Muse Spark 1.3 Fix" \
             --prerelease \
             --notes-file release-notes.md

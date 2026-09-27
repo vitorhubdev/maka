@@ -36,6 +36,11 @@
   <img src="https://img.shields.io/badge/platforms-macOS%20%C2%B7%20Windows%20preview%20%C2%B7%20Linux%20preview-4C8DFF?style=flat" alt="Platforms: macOS, Windows preview, Linux preview" />
 </p>
 
+> [!NOTE]
+> **Sobre este fork (`vitorhubdev/maka`)** — este repositório acompanha o Apache Maka original e mantém apenas correções extras pontuais ainda necessárias para uso diário. Fora dessas correções, arquitetura, funcionalidades e documentação seguem o projeto upstream [`apache/maka`](https://github.com/apache/maka).
+>
+> **Correção extra atual:** suporte ao `OpenCode Go / muse-spark-1.3-contributor` usando o protocolo **OpenAI Responses**, preservando o `x-opencode-session` nativo do Maka.
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/readme-hero.en.dark.png" />
   <img alt="One turn of RuntimeEvents: the model speaks, runs a command, asks permission, you approve, it gets the result, edits a file, the turn ends." src="./.github/assets/readme-hero.en.light.png" />
@@ -72,7 +77,7 @@ The [website](https://maka.apache.org/en/) walks through one turn of the log and
 ### Start Desktop
 
 ```sh
-git clone https://github.com/apache/maka.git
+git clone https://github.com/vitorhubdev/maka.git
 cd maka
 npm ci
 npm run dev
